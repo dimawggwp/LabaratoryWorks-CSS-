@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="" />
+    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,6 +74,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Елдос\PyCharmMiscProject" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\practices\practice 3" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\lab 1" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="dimash" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <option name="ENV_FILES" value="" />
@@ -142,9 +151,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.qwerty" />
       <item itemvalue="Python.dimash" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.qwerty" />
     </list>
   </component>
   <component name="SharedIndexes">
