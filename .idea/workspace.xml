@@ -45,38 +45,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.4th lab.executor": "Run",
-    "Python.Dimash.executor": "Run",
-    "Python.GGWP.executor": "Run",
-    "Python.OpeningGithub.executor": "Run",
-    "Python.Socialize.executor": "Run",
-    "Python.ToGithub.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.dimash.executor": "Run",
-    "Python.example1.executor": "Run",
-    "Python.example2.executor": "Run",
-    "Python.first  task in gh.executor": "Run",
-    "Python.first  task.executor": "Run",
-    "Python.flask.executor": "Run",
-    "Python.jij.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.qwerty.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.intellij.jupyter.py.connections.configurable.JupyterServersConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.4th lab.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Dimash.executor&quot;: &quot;Run&quot;,
+    &quot;Python.GGWP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OpeningGithub.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Socialize.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ToGithub.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dimash.executor&quot;: &quot;Run&quot;,
+    &quot;Python.example1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.example2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.first  task in gh.executor&quot;: &quot;Run&quot;,
+    &quot;Python.first  task.executor&quot;: &quot;Run&quot;,
+    &quot;Python.flask.executor&quot;: &quot;Run&quot;,
+    &quot;Python.jij.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qwerty.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.jupyter.py.connections.configurable.JupyterServersConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Елдос\PyCharmMiscProject\.venv" />

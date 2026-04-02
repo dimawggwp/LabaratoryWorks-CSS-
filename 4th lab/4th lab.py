@@ -2,7 +2,9 @@
 from fastapi import FastAPI
 from datetime import datetime
 import random
+
 app = FastAPI()
+
 # 1,2,16,17
 class Player:
     def __init__(self, player_id: int, name: str, hp: int):
@@ -23,11 +25,9 @@ class Player:
             parts = data.strip().split(",")
             if len(parts) != 3:
                 raise ValueError()
-
             return cls(int(parts[0]), parts[1], int(parts[2]))
         except:
             raise ValueError("Ошибка строки")
-
 
     @property
     def hp(self):
@@ -39,54 +39,10 @@ class Player:
     def get_inventory(self):
         return self._inventory
 
-
-
-#3
-class Item:
-    def __init__(self, item_id: int, name: str, power: int):
-        self.id = item_id
-        self.name = name.strip()
-        self.power = power
-    def __str__(self):
-        return f"Item(id={self.id}, name='{self.name}', power={self.power})"
-    def __eq__(self, other):
-        return isinstance(other,Item) and self.id == other.id
-    def __hash__(self):
-        return hash(self.id)
-
-#4
-class Inventory:
-    def __init__(self):
-        self.items = []
-    def add_item(self, item: Item):
-        if not any(i.id == item.id for i in self.items):
-            self.items.append(item)
-    def remove_item(self, item_if: int):
-        self.items = [i for i in self.items if i.id != item.id]
-    def get_items(self):
-        return self.items
-    def unique_items(self):
-        return set(self.items)
-    def to_dict(self):
-        return {item.id: item for item in self.items}
-
-#5
-def get_strong_items(self, min_power):
-    return list(filter(lambda x: x.power >= min_power, self.items))
-
-#6
-class Event:
-    def __init__(self, type_, data):
-        self.type = type_
-        self.data = data
-        self.timesmap = datetime.now()
-    def __str__(self):
-        return f"Event(type='{self.type}', data={self.data}, timestamp='{self.timestamp}')"
-
-#7
+    #7
     def handle_event(self, event):
         if event.type == "ATTACK":
-            damage = event_hp(-damage)
+            damage = event.data.get("damage", 0)
             self.change_hp(-damage)
         elif event.type == "HEAL":
             heal = event.data.get("heal", 0)
@@ -95,6 +51,70 @@ class Event:
             item = event.data.get("item")
             if item:
                 self._inventory.add_item(item)
+
+
+# добавили Warrior (минимально)
+class Warrior(Player):
+    pass
+
+
+#3
+class Item:
+    def __init__(self, item_id: int, name: str, power: int):
+        self.id = item_id
+        self.name = name.strip()
+        self.power = power
+
+    def __str__(self):
+        return f"Item(id={self.id}, name='{self.name}', power={self.power})"
+
+    def __eq__(self, other):
+        return isinstance(other, Item) and self.id == other.id
+
+    def __hash__(self):
+        return hash(self.id)
+
+
+#4
+class Inventory:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item: Item):
+        if not any(i.id == item.id for i in self.items):
+            self.items.append(item)
+
+    def remove_item(self, item_id: int):  # FIX
+        self.items = [i for i in self.items if i.id != item_id]
+
+    def get_items(self):
+        return self.items
+
+    def unique_items(self):
+        return set(self.items)
+
+    def to_dict(self):
+        return {item.id: item for item in self.items}
+
+    #5 FIX (перенесено внутрь класса)
+    def get_strong_items(self, min_power):
+        return list(filter(lambda x: x.power >= min_power, self.items))
+
+    #18 FIX (перенесено сюда)
+    def __iter__(self):
+        return iter(self.items)
+
+
+#6
+class Event:
+    def __init__(self, type_, data):
+        self.type = type_
+        self.data = data
+        self.timestamp = datetime.now()  # FIX
+
+    def __str__(self):
+        return f"Event(type='{self.type}', data={self.data}, timestamp='{self.timestamp}')"
+
 
 #8
 class Logger:
@@ -114,11 +134,13 @@ class Logger:
                 events.append(e)
         return events
 
+
 #10
 class EventIterator:
     def __init__(self, events):
         self.events = events
         self.index = 0
+
     def __iter__(self):
         return self
 
@@ -129,11 +151,13 @@ class EventIterator:
         self.index += 1
         return val
 
+
 #11
 def damage_stream(events):
     for e in events:
         if e.type == "ATTACK":
             yield e.data.get("damage", 0)
+
 
 #12
 def generate_events(players, items, n):
@@ -142,31 +166,33 @@ def generate_events(players, items, n):
     events = []
     for _ in range(n):
         for p in players:
-            t = (lambda x: random.choice(x))(types)
+            t = random.choice(types)  # чуть проще
 
             if t == "ATTACK":
                 events.append(Event(t, {"damage": random.randint(5, 20)}))
-
             elif t == "HEAL":
                 events.append(Event(t, {"heal": random.randint(5, 15)}))
-
             else:
                 events.append(Event(t, {"item": random.choice(items)}))
 
     return events
 
+
 #13
 def analyze_logs(events):
     total_damage = sum([e.data.get("damage", 0) for e in events if e.type == "ATTACK"])
     types = [e.type for e in events]
-    most_common = max(set(types), key = types.count)
+    most_common = max(set(types), key=types.count)
+
     return {
         "total_damage": total_damage,
         "most_common_event": most_common
     }
 
+
 #14
 decide_action = lambda p: "HEAL" if p.hp < 50 else "ATTACK"
+
 
 #15
 class Mage(Player):
@@ -174,12 +200,9 @@ class Mage(Player):
         if event.type == "LOOT":
             item = event.data.get("item")
             if item:
-                item.power = int(item.power * 1.1)  # +10%
+                item.power = int(item.power * 1.1)
         super().handle_event(event)
 
-#18
-    def __iter__(self):
-        return iter(self.items)
 
 #19
 def analyze_inventory(inventories):
@@ -197,36 +220,29 @@ def analyze_inventory(inventories):
 #20
 @app.get("/")
 def main():
-    # игроки
     p1 = Warrior(1, "john", 100)
     p2 = Mage(2, "alice", 80)
 
     players = [p1, p2]
 
-    # предметы
     items = [
         Item(1, "Sword", 50),
         Item(2, "Staff", 40)
     ]
 
-    # события
     events = generate_events(players, items, 3)
 
-    # обработка
     for e in events:
         for p in players:
             p.handle_event(e)
 
-    # логирование
     for e in events:
         Logger.log(e, p1, "logs.txt")
 
     logs = Logger.read_logs("logs.txt")
 
-    # генератор
     damages = list(damage_stream(logs))
 
-    # аналитика
     stats = analyze_logs(logs)
 
     inv_stats = analyze_inventory([p.get_inventory() for p in players])
