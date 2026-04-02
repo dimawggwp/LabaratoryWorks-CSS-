@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.venv/qwert.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4th lab/4th lab.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop_bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3rd lab/3rd lab.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/3rd lab/3rd lab.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
