@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="" />
+    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/5th lab/5thlab.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/5thlabApi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4th lab/4th lab.py" beforeDir="false" afterPath="$PROJECT_DIR$/4th lab/4thlab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4th lab/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/4th lab/log.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +40,9 @@
     </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/4th lab/4thlab.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -49,6 +58,8 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.4th lab.executor&quot;: &quot;Run&quot;,
+    &quot;Python.4thlab.executor&quot;: &quot;Run&quot;,
+    &quot;Python.5thlab.executor&quot;: &quot;Run&quot;,
     &quot;Python.Dimash.executor&quot;: &quot;Run&quot;,
     &quot;Python.GGWP.executor&quot;: &quot;Run&quot;,
     &quot;Python.OpeningGithub.executor&quot;: &quot;Run&quot;,
@@ -79,14 +90,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\5th lab" />
       <recent name="C:\Users\Елдос\PyCharmMiscProject\.venv" />
       <recent name="C:\Users\Елдос\PyCharmMiscProject\3rd lab" />
       <recent name="C:\Users\Елдос\PyCharmMiscProject\lab2" />
       <recent name="C:\Users\Елдос\PyCharmMiscProject" />
-      <recent name="C:\Users\Елдос\PyCharmMiscProject\practices\practice 3" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.dimash">
     <configuration name="dimash" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
