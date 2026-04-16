@@ -184,8 +184,17 @@ def products_to_dataframe(products):
     return pd.DataFrame([p.to_dict() for p in products])
 
 def merge_users_orders(users_df, orders_df):
-    merged = pd.merge(orders_df, users_df, left_on="user_id", right_on="id")
-    return merged[["order_id", "name", "total"]].rename(columns={"name": "user_name"})
+    merged = pd.merge(
+        orders_df,
+        users_df,
+        left_on="user_id",
+        right_on="id",
+        suffixes=("_order", "_user")
+    )
+
+    return merged[["order_id", "name", "total"]].rename(
+        columns={"name": "user_name"}
+    )
 
 def filter_orders(df, min_total):
     return df[df["total"] > min_total]
