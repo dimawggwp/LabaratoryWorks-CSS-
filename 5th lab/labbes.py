@@ -3,9 +3,7 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import os
-
 app = FastAPI()
-
 #Классы
 
 class User:
@@ -246,46 +244,23 @@ def merge_users_orders_v2(users_df, orders_df):
 
 def mean_order_per_user(df):
     return df.groupby("user_name")["total_price"].mean().reset_index(name="mean_total")
-
+#40
 def count_orders(df):
     return df.groupby("user_name")["order_id"].count().reset_index(name="orders_count")
-
+#41
 def max_order_per_user(df):
     return df.groupby("user_name")["total_price"].max().reset_index(name="max_order")
-
+#42
 def unique_categories_per_user(df):
     return df.groupby("user_name")["category"].nunique().reset_index(name="unique_categories")
-
+#43
 def add_vip(df):
     df["VIP"] = df["total_sum"] > 1000
     return df
-
+#44
 def sort_users(df):
     return df.sort_values(by=["total_sum", "mean_total"], ascending=[False, True])
 
-def final_report(df):
-    result = df.groupby("user_name").agg({
-        "order_id": "count",
-        "total_price": ["sum", "mean", "max"],
-        "category": "nunique"
-    })
-    result.columns = ["total_orders", "total_sum", "mean_total", "max_order", "unique_categories"]
-    result = result.reset_index()
-    result["VIP"] = result["total_sum"] > 1000
-    return result
-
-
-
-
-def sample_data():
-    user = User(1, "john doe", "john@mail.com")
-    products = [
-        Product(1, "Laptop", 1200, "Electronics"),
-        Product(2, "Phone", 800, "Electronics"),
-        Product(3, "T-shirt", 20, "Clothing")
-    ]
-    order = Order(1, user, products)
-    return user, products, order
 
 
 #Вывод
