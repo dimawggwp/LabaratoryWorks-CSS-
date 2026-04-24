@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/6th lab/catalog_products.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/6th lab/6thlab.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6th lab/6thlab.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog_products.xlsx" beforeDir="false" />
-    </list>
+    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,14 +85,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\asda" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\practices" />
       <recent name="C:\Users\Елдос\PyCharmMiscProject\6th lab" />
       <recent name="C:\Users\Елдос\PyCharmMiscProject" />
       <recent name="C:\Users\Елдос\PyCharmMiscProject\5th lab" />
-      <recent name="C:\Users\Елдос\PyCharmMiscProject\.venv" />
-      <recent name="C:\Users\Елдос\PyCharmMiscProject\3rd lab" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.dimash">
     <configuration name="dimash" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />

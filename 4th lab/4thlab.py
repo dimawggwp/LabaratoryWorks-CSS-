@@ -217,41 +217,151 @@ def analyze_inventory(inventories):
     }
 
 
-#20
-@app.get("/")
-def main():
-    p1 = Warrior(1, "john", 100)
-    p2 = Mage(2, "alice", 80)
+# ---------------- FASTAPI ENDPOINTS ----------------
 
-    players = [p1, p2]
+players = [
+    Player(1, "alex", 100),
+    Warrior(2, "bob", 80),
+    Mage(3, "merlin", 60)
+]
 
-    items = [
-        Item(1, "Sword", 50),
-        Item(2, "Staff", 40)
-    ]
+items = [
+    Item(1, "Sword", 50),
+    Item(2, "Staff", 40),
+    Item(3, "Potion", 10)
+]
 
-    events = generate_events(players, items, 3)
+events_store = []
 
-    for e in events:
-        for p in players:
-            p.handle_event(e)
 
-    for e in events:
-        Logger.log(e, p1, "logs.txt")
+@app.post("/task1/create_player")
+def create_player(player_id: int, name: str, hp: int):
+    p = Player(player_id, name, hp)
+    players.append(p)
+    return str(p)
 
+
+@app.post("/task2/player_from_string")
+def player_from_string(data: str):
+    p = Player.from_string(data)
+    players.append(p)
+    return str(p)
+
+
+@app.post("/task3/create_item")
+def create_item(item_id: int, name: str, power: int):
+    item = Item(item_id, name, power)
+    items.append(item)
+    return str(item)
+
+
+@app.post("/task4/add_item")
+def add_item(player_id: int, item_id: int):
+    p = next(p for p in players if p._id == player_id)
+    item = next(i for i in items if i.id == item_id)
+    p.get_inventory().add_item(item)
+    return "Item added"
+
+
+@app.get("/task5/strong_items")
+def strong_items(player_id: int, min_power: int):
+    p = next(p for p in players if p._id == player_id)
+    return [str(i) for i in p.get_inventory().get_strong_items(min_power)]
+
+
+@app.post("/task6/create_event")
+def create_event(type_: str, value: int):
+    if type_ == "ATTACK":
+        e = Event(type_, {"damage": value})
+    elif type_ == "HEAL":
+        e = Event(type_, {"heal": value})
+    else:
+        e = Event(type_, {})
+    events_store.append(e)
+    return str(e)
+
+
+@app.post("/task7/apply_event")
+def apply_event(player_id: int, event_index: int):
+    p = next(p for p in players if p._id == player_id)
+    e = events_store[event_index]
+    p.handle_event(e)
+    return {"hp": p.hp}
+
+
+@app.post("/task8/log_event")
+def log_event(event_index: int, player_id: int):
+    e = events_store[event_index]
+    p = next(p for p in players if p._id == player_id)
+    Logger.log(e, p, "logs.txt")
+    return "logged"
+
+
+@app.get("/task9/read_logs")
+def read_logs():
     logs = Logger.read_logs("logs.txt")
+    return [str(e) for e in logs]
 
-    damages = list(damage_stream(logs))
 
-    stats = analyze_logs(logs)
+@app.get("/task10/iterate_events")
+def iterate_events():
+    iterator = EventIterator(events_store)
+    return [str(e) for e in iterator]
 
-    inv_stats = analyze_inventory([p.get_inventory() for p in players])
 
-    return {
-        "players": [str(p) for p in players],
-        "events_count": len(events),
-        "damage_stream": damages,
-        "stats": stats,
-        "inventory_stats": inv_stats
-    }
+@app.get("/task11/damage_stream")
+def get_damage_stream():
+    return list(damage_stream(events_store))
+
+
+@app.post("/task12/generate_events")
+def generate(n: int):
+    global events_store
+    events_store = generate_events(players, items, n)
+    return len(events_store)
+
+
+@app.get("/task13/analyze_logs")
+def analyze():
+    return analyze_logs(events_store)
+
+
+@app.get("/task14/decide_action")
+def decide(player_id: int):
+    p = next(p for p in players if p._id == player_id)
+    return decide_action(p)
+
+
+@app.post("/task15/mage_event")
+def mage_event(player_id: int):
+    p = next(p for p in players if p._id == player_id)
+    item = random.choice(items)
+    e = Event("LOOT", {"item": item})
+    p.handle_event(e)
+    return str(item)
+
+
+@app.post("/task16/change_hp")
+def change_hp(player_id: int, value: int):
+    p = next(p for p in players if p._id == player_id)
+    p.change_hp(value)
+    return p.hp
+
+
+@app.get("/task17/get_inventory")
+def get_inventory(player_id: int):
+    p = next(p for p in players if p._id == player_id)
+    return [str(i) for i in p.get_inventory().get_items()]
+
+
+@app.get("/task18/iterate_inventory")
+def iterate_inventory(player_id: int):
+    p = next(p for p in players if p._id == player_id)
+    return [str(i) for i in p.get_inventory()]
+
+
+@app.get("/task19/analyze_inventory")
+def analyze_inv():
+    inventories = [p.get_inventory() for p in players]
+    return analyze_inventory(inventories)
 #%%
