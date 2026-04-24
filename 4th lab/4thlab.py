@@ -217,8 +217,6 @@ def analyze_inventory(inventories):
     }
 
 
-# ---------------- FASTAPI ENDPOINTS ----------------
-
 players = [
     Player(1, "alex", 100),
     Warrior(2, "bob", 80),
