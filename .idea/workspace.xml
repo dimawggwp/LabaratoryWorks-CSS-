@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="" />
+    <list default="true" id="b0aabe9b-47db-4c2d-bc48-de677f77ffea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ICT/bot (1).py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/final/music_catalog.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/iphelper/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/6th lab/catalog_products.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/final/FINALPROJECT.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asda/catalog_products.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asda/dssds.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/asda/dssds.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog_final_report.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/file.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/names.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/practices/catalog_analysis.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/practices/practice 3/data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/practices/practice 3/file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/practices/practice 3/files.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop_bot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zashita.ipynb" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,48 +72,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.4th lab.executor&quot;: &quot;Run&quot;,
-    &quot;Python.4thlab.executor&quot;: &quot;Run&quot;,
-    &quot;Python.5thlab.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Dimash.executor&quot;: &quot;Run&quot;,
-    &quot;Python.GGWP.executor&quot;: &quot;Run&quot;,
-    &quot;Python.OpeningGithub.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Socialize.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ToGithub.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dimash.executor&quot;: &quot;Run&quot;,
-    &quot;Python.example1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.example2.executor&quot;: &quot;Run&quot;,
-    &quot;Python.first  task in gh.executor&quot;: &quot;Run&quot;,
-    &quot;Python.first  task.executor&quot;: &quot;Run&quot;,
-    &quot;Python.flask.executor&quot;: &quot;Run&quot;,
-    &quot;Python.jij.executor&quot;: &quot;Run&quot;,
-    &quot;Python.labbes.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.qwerty.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.4th lab.executor": "Run",
+    "Python.4thlab.executor": "Run",
+    "Python.5thlab.executor": "Run",
+    "Python.Dimash.executor": "Run",
+    "Python.GGWP.executor": "Run",
+    "Python.OpeningGithub.executor": "Run",
+    "Python.Socialize.executor": "Run",
+    "Python.ToGithub.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.bot (1).executor": "Run",
+    "Python.dimash.executor": "Run",
+    "Python.example1.executor": "Run",
+    "Python.example2.executor": "Run",
+    "Python.first  task in gh.executor": "Run",
+    "Python.first  task.executor": "Run",
+    "Python.flask.executor": "Run",
+    "Python.jij.executor": "Run",
+    "Python.labbes.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.qwerty.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Елдос/PyCharmMiscProject/IPdoxer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\IPdoxer" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\ICT\templates" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\ICT" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\ICT\templates/" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\final" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Елдос\PyCharmMiscProject\asda" />
-      <recent name="C:\Users\Елдос\PyCharmMiscProject\practices" />
-      <recent name="C:\Users\Елдос\PyCharmMiscProject\6th lab" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\final" />
       <recent name="C:\Users\Елдос\PyCharmMiscProject" />
-      <recent name="C:\Users\Елдос\PyCharmMiscProject\5th lab" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\practices" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\asda" />
+      <recent name="C:\Users\Елдос\PyCharmMiscProject\6th lab" />
     </key>
   </component>
   <component name="RunManager" selected="Python.dimash">
@@ -201,6 +234,11 @@
           <url>file://$PROJECT_DIR$/1st lab/1st labaratory.ipynb</url>
           <line>325</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ICT/bot (1).py</url>
+          <line>5</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

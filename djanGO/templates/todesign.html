@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Prestige — Стоматологический центр</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF8F4;
+    --sand: #EDE8DF;
+    --gold: #B8975A;
+    --gold-light: #D4B87A;
+    --dark: #1A1815;
+    --mid: #4A4540;
+    --muted: #8A8278;
+    --white: #FFFFFF;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    font-size: 14px;
+    min-height: 100vh;
+  }
+
+  .app { display: flex; min-height: 100vh; }
+
+  /* ── Sidebar ───────────────────────────── */
+  .sidebar {
+    width: 230px;
+    background: var(--dark);
+    padding: 36px 0;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+  }
+
+  .logo {
+    padding: 0 28px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 20px;
+  }
+
+  .logo-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .nav-section {
+    padding: 6px 28px;
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    margin: 12px 0 4px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 28px;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13.5px;
+    border-left: 2px solid transparent;
+    user-select: none;
+  }
+
+  .nav-item:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.04); }
+  .nav-item.active { color: var(--gold-light); border-left-color: var(--gold); background: rgba(184,151,90,0.09); }
+
+  .nav-icon { font-size: 15px; width: 18px; text-align: center; opacity: 0.8; }
+
+  /* ── Main area ─────────────────────────── */
+  .main { flex: 1; margin-left: 230px; display: flex; flex-direction: column; min-height: 100vh; }
+
+  .topbar {
+    background: var(--white);
+    padding: 18px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--sand);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .topbar-actions { display: flex; gap: 10px; }
+
+  .btn {
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-weight: 400;
+    border: none;
+  }
+
+  .btn-primary { background: var(--gold); color: #fff; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost { background: transparent; border: 1px solid var(--sand); color: var(--mid); }
+  .btn-ghost:hover { background: var(--sand); }
+  .btn-sm { padding: 5px 11px; font-size: 12px; border-radius: 5px; }
+  .btn-danger { background: transparent; border: 1px solid #F5C1C1; color: #9B2C2C; }
+  .btn-danger:hover { background: #FCEBEB; }
+  .btn-success { background: transparent; border: 1px solid #BFE3C9; color: #1E6B35; }
+  .btn-success:hover { background: #DDEFDC; }
+
+  .content { flex: 1; padding: 30px 36px; }
+
+  /* ── Stats grid ────────────────────────── */
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+
+  .stat-label { font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--dark); line-height: 1; }
+  .stat-sub { font-size: 11px; color: var(--muted); margin-top: 5px; }
+  .stat-gold .stat-value { color: var(--gold); }
+
+  /* ── Panels ────────────────────────────── */
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .panel {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .panel-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--sand);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .panel-title { font-size: 13.5px; font-weight: 500; color: var(--dark); }
+
+  /* ── Table ─────────────────────────────── */
+  .data-table { width: 100%; border-collapse: collapse; }
+
+  .data-table th {
+    padding: 10px 22px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    background: var(--cream);
+    font-weight: 400;
+  }
+
+  .data-table td {
+    padding: 13px 22px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--sand);
+    color: var(--dark);
+    vertical-align: middle;
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tbody tr:hover td { background: #FDFBF8; }
+
+  /* ── Badges ────────────────────────────── */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .badge-active  { background: #DDEFDC; color: #1E5C2B; }
+  .badge-done    { background: #EEE8DC; color: #7A5A1A; }
+  .badge-cancel  { background: #F5EAEA; color: #7A2020; }
+  .badge-waiting { background: #EEF4FB; color: #1E4A7A; }
+  .badge-spec    { background: var(--sand); color: var(--mid); }
+
+  /* ── Schedule slots ────────────────────── */
+  .slot {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 13px 22px;
+    border-bottom: 1px solid var(--sand);
+    cursor: default;
+    transition: background 0.15s;
+  }
+
+  .slot:last-child { border-bottom: none; }
+  .slot:hover { background: var(--cream); }
+
+  .slot-time { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; color: var(--gold); min-width: 48px; }
+  .slot-divider { width: 1px; height: 38px; background: var(--sand); flex-shrink: 0; }
+  .slot-info { flex: 1; min-width: 0; }
+  .slot-patient { font-size: 13.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .slot-service { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .slot-dr { font-size: 11px; color: var(--mid); background: var(--cream); padding: 3px 9px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+
+  /* ── Avatar ────────────────────────────── */
+  .avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11.5px; font-weight: 500; color: var(--mid);
+    flex-shrink: 0;
+  }
+
+  .avatar-gold { background: #EDE8DC; color: var(--gold); }
+
+  .td-flex { display: flex; align-items: center; gap: 10px; }
+
+  /* ── Empty state ───────────────────────── */
+  .empty { padding: 36px; text-align: center; color: var(--muted); font-size: 13px; }
+
+  /* ── Modal ─────────────────────────────── */
+  .overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(26,24,21,0.55);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .overlay.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 12px;
+    width: 490px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.25);
+  }
+
+  .modal-head {
+    padding: 26px 30px 20px;
+    border-bottom: 1px solid var(--sand);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; }
+  .modal-close { cursor: pointer; color: var(--muted); font-size: 20px; background: none; border: none; line-height: 1; padding: 2px 6px; border-radius: 4px; }
+  .modal-close:hover { background: var(--sand); color: var(--dark); }
+  .modal-body { padding: 26px 30px; }
+  .modal-foot { padding: 18px 30px; border-top: 1px solid var(--sand); display: flex; justify-content: flex-end; gap: 10px; }
+
+  /* ── Form ──────────────────────────────── */
+  .form-group { margin-bottom: 18px; }
+
+  .form-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 7px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1px solid var(--sand);
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: none;
+  }
+
+  .form-control:focus { border-color: var(--gold); }
+  .form-control::placeholder { color: #C5BFB5; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* ── Toast ─────────────────────────────── */
+  .toast {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    background: var(--dark);
+    color: var(--white);
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 200;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
+    border-left: 3px solid var(--gold);
+    pointer-events: none;
+    max-width: 320px;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="logo">
+      <span class="logo-symbol">✦</span>
+      <span class="logo-name">Dental Prestige</span>
+    </div>
+    <div class="nav-section">Клиника</div>
+    <div class="nav-item active" onclick="go('dashboard',this)">
+      <span class="nav-icon">◈</span> Панель
+    </div>
+    <div class="nav-item" onclick="go('patients',this)">
+      <span class="nav-icon">◉</span> Пациенты
+    </div>
+    <div class="nav-item" onclick="go('doctors',this)">
+      <span class="nav-icon">◎</span> Врачи
+    </div>
+    <div class="nav-section">Сервис</div>
+    <div class="nav-item" onclick="go('appointments',this)">
+      <span class="nav-icon">◷</span> Записи
+    </div>
+    <div class="nav-item" onclick="go('services',this)">
+      <span class="nav-icon">◆</span> Услуги
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="page-title" id="pageTitle">Панель управления</div>
+      <div class="topbar-actions" id="topbarActions"></div>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot" id="modalFoot"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ══════════════════════════════════════════
+     OOP PYTHON → JS (перевод классов)
+═══════════════════════════════════════════ -->
+<script>
+// ── AppointmentStatus ────────────────────────
+const Status = { WAITING:'waiting', ACTIVE:'active', DONE:'done', CANCELED:'canceled' };
+
+// ── Person (base) ────────────────────────────
+class Person {
+  constructor(id, name, phone, email) {
+    this._id = id; this._name = name;
+    this._phone = phone; this._email = email;
+  }
+  get id()    { return this._id; }
+  get name()  { return this._name; }
+  get phone() { return this._phone; }
+  get email() { return this._email; }
+  initials()  { return this._name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
+  toString()  { return this._name; }
+}
+
+// ── Patient extends Person ───────────────────
+class Patient extends Person {
+  constructor(id, name, phone, email, birthYear, notes='') {
+    super(id, name, phone, email);
+    this._birthYear = birthYear;
+    this._notes = notes;
+    this._appointments = [];
+  }
+  get age()          { return new Date().getFullYear() - this._birthYear; }
+  get notes()        { return this._notes; }
+  set notes(v)       { this._notes = v; }
+  get appointments() { return [...this._appointments]; }
+  addAppointment(a)  { this._appointments.push(a); }
+  appointmentCount() { return this._appointments.length; }
+  info() {
+    return `Пациент: ${this._name} | Возраст: ${this.age} л. | Тел.: ${this._phone}`
+      + (this._notes ? ` | ${this._notes}` : '');
+  }
+}
+
+// ── Doctor extends Person ────────────────────
+class Doctor extends Person {
+  constructor(id, name, phone, email, specialization) {
+    super(id, name, phone, email);
+    this._spec = specialization;
+  }
+  get specialization() { return this._spec; }
+}
+
+// ── Service ──────────────────────────────────
+class Service {
+  constructor(id, name, price, durationMin) {
+    this._id = id; this._name = name;
+    this._price = price; this._dur = durationMin;
+  }
+  get id()          { return this._id; }
+  get name()        { return this._name; }
+  get price()       { return this._price; }
+  get durationMin() { return this._dur; }
+  toString()        { return `${this._name} — ${this._price.toLocaleString()} ₸`; }
+}
+
+// ── Appointment ──────────────────────────────
+class Appointment {
+  #status;
+  constructor(id, patient, doctor, service, date, time) {
+    this._id = id; this._patient = patient; this._doctor = doctor;
+    this._service = service; this._date = date; this._time = time;
+    this.#status = Status.WAITING;
+  }
+  get id()      { return this._id; }
+  get patient() { return this._patient; }
+  get doctor()  { return this._doctor; }
+  get service() { return this._service; }
+  get date()    { return this._date; }
+  get time()    { return this._time; }
+  get status()  { return this.#status; }
+  confirm()     { if(this.#status===Status.WAITING) this.#status=Status.ACTIVE; }
+  complete()    { if(this.#status!==Status.CANCELED) this.#status=Status.DONE; }
+  cancel()      { if(this.#status!==Status.DONE) this.#status=Status.CANCELED; }
+}
+
+// ── Clinic ───────────────────────────────────
+class Clinic {
+  constructor(name) {
+    this._name = name;
+    this._patients = {}; this._doctors = {};
+    this._services = {}; this._appointments = {};
+    this._ctr = 1;
+  }
+  _id() { return this._ctr++; }
+
+  addPatient(name, phone, email, birthYear, notes='') {
+    const p = new Patient(this._id(), name, phone, email, birthYear, notes);
+    this._patients[p.id] = p; return p;
+  }
+  removePatient(id) { delete this._patients[id]; this._pruneAppts(a=>a.patient.id!==id); }
+
+  addDoctor(name, phone, email, spec) {
+    const d = new Doctor(this._id(), name, phone, email, spec);
+    this._doctors[d.id] = d; return d;
+  }
+
+  addService(name, price, dur) {
+    const s = new Service(this._id(), name, price, dur);
+    this._services[s.id] = s; return s;
+  }
+  removeService(id) { delete this._services[id]; }
+
+  book(patientId, doctorId, serviceId, date, time) {
+    const p = this._patients[patientId];
+    const d = this._doctors[doctorId];
+    const s = this._services[serviceId];
+    if (!p||!d||!s) return null;
+    const a = new Appointment(this._id(), p, d, s, date, time);
+    this._appointments[a.id] = a;
+    p.addAppointment(a);
+    return a;
+  }
+
+  _pruneAppts(fn) {
+    for(const id in this._appointments) if(!fn(this._appointments[id])) delete this._appointments[id];
+  }
+
+  get patients()     { return Object.values(this._patients); }
+  get doctors()      { return Object.values(this._doctors); }
+  get services()     { return Object.values(this._services); }
+  get appointments() { return Object.values(this._appointments); }
+
+  todaysAppts() {
+    const t = new Date().toISOString().slice(0,10);
+    return this.appointments.filter(a=>a.date===t);
+  }
+
+  revenue() {
+    return this.appointments.filter(a=>a.status===Status.DONE).reduce((s,a)=>s+a.service.price,0);
+  }
+
+  stats() {
+    return {
+      patients: this.patients.length, doctors: this.doctors.length,
+      services: this.services.length, total: this.appointments.length,
+      today: this.todaysAppts().length, revenue: this.revenue()
+    };
+  }
+}
+
+// ── Seed data ────────────────────────────────
+const clinic = new Clinic('Dental Prestige');
+const today  = new Date().toISOString().slice(0,10);
+
+const d1 = clinic.addDoctor('Алина Сейтова',   '+7 777 000 01', 'a.s@dp.kz', 'Терапевт');
+const d2 = clinic.addDoctor('Марат Бекенов',   '+7 777 000 02', 'm.b@dp.kz', 'Хирург');
+const d3 = clinic.addDoctor('Жанна Нурланова', '+7 777 000 03', 'z.n@dp.kz', 'Ортодонт');
+
+const s1 = clinic.addService('Отбеливание',        25000, 60);
+const s2 = clinic.addService('Лечение кариеса',    15000, 45);
+const s3 = clinic.addService('Удаление зуба',      12000, 30);
+const s4 = clinic.addService('Установка брекетов', 80000, 90);
+const s5 = clinic.addService('Чистка ультразвуком', 8000, 40);
+
+const p1 = clinic.addPatient('Айгерим Касымова',       '+7 701 111 11', 'a.k@mail.kz', 1990, 'Аллергия на лидокаин');
+const p2 = clinic.addPatient('Данияр Ахметов',         '+7 702 222 22', 'd.a@mail.kz', 1985);
+const p3 = clinic.addPatient('Сауле Нурмаганбетова',   '+7 703 333 33', 's.n@mail.kz', 1995, 'Имплант на 36');
+const p4 = clinic.addPatient('Тимур Джаксыбеков',      '+7 704 444 44', 't.d@mail.kz', 2000);
+const p5 = clinic.addPatient('Гульнара Омарова',       '+7 705 555 55', 'g.o@mail.kz', 1978, 'Диабет II типа');
+
+const a1 = clinic.book(p1.id, d1.id, s1.id, today, '09:00'); a1.confirm();
+const a2 = clinic.book(p2.id, d2.id, s3.id, today, '10:30'); a2.complete();
+const a3 = clinic.book(p3.id, d3.id, s4.id, today, '11:00');
+const a4 = clinic.book(p4.id, d1.id, s2.id, today, '13:00'); a4.confirm();
+const a5 = clinic.book(p5.id, d2.id, s5.id, today, '14:30'); a5.cancel();
+const a6 = clinic.book(p1.id, d2.id, s3.id, '2026-04-20', '10:00'); a6.complete();
+const a7 = clinic.book(p3.id, d1.id, s5.id, '2026-04-20', '11:00'); a7.complete();
+</script>
+
+<!-- ══════════════════════════════════════════
+     UI LOGIC
+═══════════════════════════════════════════ -->
+<script>
+const SL = { waiting:'Ожидает', active:'Активен', done:'Завершён', canceled:'Отменён' };
+const SB = { waiting:'badge-waiting', active:'badge-active', done:'badge-done', canceled:'badge-cancel' };
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = '✦  ' + msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+function openModal()  { document.getElementById('overlay').classList.add('open'); }
+function closeModal() { document.getElementById('overlay').classList.remove('open'); }
+
+let page = 'dashboard';
+
+function go(p, el) {
+  page = p;
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+  if(el) el.classList.add('active');
+  render();
+}
+
+function render() {
+  const titles = { dashboard:'Панель управления', patients:'Пациенты', doctors:'Врачи', appointments:'Записи на приём', services:'Услуги' };
+  document.getElementById('pageTitle').textContent = titles[page];
+  const fns = { dashboard:renderDash, patients:renderPatients, doctors:renderDoctors, appointments:renderAppts, services:renderServices };
+  if(fns[page]) fns[page]();
+}
+
+// ── Dashboard ──────────────────────────────
+function renderDash() {
+  document.getElementById('topbarActions').innerHTML = '';
+  const s = clinic.stats();
+  const appts = clinic.todaysAppts().sort((a,b)=>a.time.localeCompare(b.time));
+
+  document.getElementById('content').innerHTML = `
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-label">Пациентов</div><div class="stat-value">${s.patients}</div><div class="stat-sub">в базе</div></div>
+      <div class="stat-card"><div class="stat-label">Врачей</div><div class="stat-value">${s.doctors}</div><div class="stat-sub">в клинике</div></div>
+      <div class="stat-card stat-gold"><div class="stat-label">Сегодня</div><div class="stat-value">${s.today}</div><div class="stat-sub">приёмов</div></div>
+      <div class="stat-card"><div class="stat-label">Выручка</div><div class="stat-value">${(s.revenue/1000).toFixed(0)}к ₸</div><div class="stat-sub">завершённые</div></div>
+    </div>
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-header"><div class="panel-title">Расписание на сегодня</div></div>
+        <div id="schedList"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><div class="panel-title">Последние пациенты</div></div>
+        <table class="data-table">
+          <thead><tr><th>Пациент</th><th>Возраст</th><th>Записей</th></tr></thead>
+          <tbody>
+            ${clinic.patients.slice(-5).reverse().map(p=>`
+              <tr>
+                <td><div class="td-flex"><div class="avatar">${p.initials()}</div>${p.name}</div></td>
+                <td>${p.age} лет</td>
+                <td>${p.appointmentCount()}</td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+
+  const sl = document.getElementById('schedList');
+  if(!appts.length) { sl.innerHTML='<div class="empty">Нет записей на сегодня</div>'; return; }
+  sl.innerHTML = appts.map(a=>`
+    <div class="slot">
+      <div class="slot-time">${a.time}</div>
+      <div class="slot-divider"></div>
+      <div class="slot-info">
+        <div class="slot-patient">${a.patient.name}</div>
+        <div class="slot-service">${a.service.name} — ${a.service.price.toLocaleString()} ₸</div>
+      </div>
+      <div class="slot-dr">${a.doctor.name.split(' ')[0]}</div>
+      <span class="badge ${SB[a.status]}">${SL[a.status]}</span>
+    </div>`).join('');
+}
+
+// ── Patients ───────────────────────────────
+function renderPatients() {
+  document.getElementById('topbarActions').innerHTML = `<button class="btn btn-primary" onclick="openAddPatient()">+ Добавить пациента</button>`;
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <table class="data-table">
+        <thead><tr><th>Пациент</th><th>Телефон</th><th>Возраст</th><th>Записей</th><th>Заметки</th><th></th></tr></thead>
+        <tbody id="pBody"></tbody>
+      </table>
+    </div>`;
+  fillPatients();
+}
+
+function fillPatients() {
+  const b = document.getElementById('pBody'); if(!b) return;
+  b.innerHTML = clinic.patients.map(p=>`
+    <tr>
+      <td><div class="td-flex"><div class="avatar">${p.initials()}</div>${p.name}</div></td>
+      <td style="color:var(--muted)">${p.phone}</td>
+      <td>${p.age} лет</td>
+      <td>${p.appointmentCount()}</td>
+      <td style="color:var(--muted);font-size:12px">${p.notes||'—'}</td>
+      <td><button class="btn btn-sm btn-danger" onclick="delPatient(${p.id})">Удалить</button></td>
+    </tr>`).join('');
+}
+
+function openAddPatient() {
+  document.getElementById('modalTitle').textContent = 'Новый пациент';
+  document.getElementById('modalBody').innerHTML = `
+    <div class="form-group"><label class="form-label">ФИО *</label><input class="form-control" id="f_name" placeholder="Иванов Иван Иванович"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Телефон *</label><input class="form-control" id="f_phone" placeholder="+7 700 000 00 00"></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-control" id="f_email" placeholder="email@mail.kz"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Год рождения *</label><input class="form-control" id="f_year" type="number" placeholder="1990" min="1930" max="2020"></div>
+    <div class="form-group"><label class="form-label">Заметки</label><textarea class="form-control" id="f_notes" rows="2" style="resize:none;height:70px"></textarea></div>`;
+  document.getElementById('modalFoot').innerHTML = `
+    <button class="btn btn-ghost" onclick="closeModal()">Отмена</button>
+    <button class="btn btn-primary" onclick="savePatient()">Сохранить</button>`;
+  openModal();
+}
+
+function savePatient() {
+  const name = document.getElementById('f_name').value.trim();
+  const phone = document.getElementById('f_phone').value.trim();
+  const email = document.getElementById('f_email').value.trim();
+  const year = parseInt(document.getElementById('f_year').value);
+  const notes = document.getElementById('f_notes').value.trim();
+  if(!name||!phone||!year) { toast('Заполните обязательные поля'); return; }
+  clinic.addPatient(name, phone, email, year, notes);
+  closeModal(); toast('Пациент добавлен!'); renderPatients();
+}
+
+function delPatient(id) {
+  clinic.removePatient(id); toast('Пациент удалён'); fillPatients();
+}
+
+// ── Doctors ────────────────────────────────
+function renderDoctors() {
+  document.getElementById('topbarActions').innerHTML = `<button class="btn btn-primary" onclick="openAddDoctor()">+ Добавить врача</button>`;
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <table class="data-table">
+        <thead><tr><th>Врач</th><th>Специализация</th><th>Email</th><th>Приёмов</th></tr></thead>
+        <tbody>
+          ${clinic.doctors.map(d=>{
+            const cnt = clinic.appointments.filter(a=>a.doctor.id===d.id).length;
+            return `<tr>
+              <td><div class="td-flex"><div class="avatar avatar-gold">${d.initials()}</div>${d.name}</div></td>
+              <td><span class="badge badge-spec">${d.specialization}</span></td>
+              <td style="color:var(--muted)">${d.email}</td>
+              <td>${cnt}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+function openAddDoctor() {
+  document.getElementById('modalTitle').textContent = 'Новый врач';
+  document.getElementById('modalBody').innerHTML = `
+    <div class="form-group"><label class="form-label">ФИО *</label><input class="form-control" id="d_name"></div>
+    <div class="form-group"><label class="form-label">Специализация</label>
+      <select class="form-control" id="d_spec">
+        <option>Терапевт</option><option>Хирург</option><option>Ортодонт</option>
+        <option>Пародонтолог</option><option>Имплантолог</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Телефон</label><input class="form-control" id="d_phone"></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-control" id="d_email"></div>
+    </div>`;
+  document.getElementById('modalFoot').innerHTML = `
+    <button class="btn btn-ghost" onclick="closeModal()">Отмена</button>
+    <button class="btn btn-primary" onclick="saveDoctor()">Сохранить</button>`;
+  openModal();
+}
+
+function saveDoctor() {
+  const name = document.getElementById('d_name').value.trim();
+  if(!name) { toast('Введите ФИО'); return; }
+  clinic.addDoctor(name, document.getElementById('d_phone').value.trim(),
+    document.getElementById('d_email').value.trim(), document.getElementById('d_spec').value);
+  closeModal(); toast('Врач добавлен!'); renderDoctors();
+}
+
+// ── Appointments ───────────────────────────
+function renderAppts() {
+  document.getElementById('topbarActions').innerHTML = `<button class="btn btn-primary" onclick="openBookAppt()">+ Новая запись</button>`;
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <table class="data-table">
+        <thead><tr><th>Дата / Время</th><th>Пациент</th><th>Врач</th><th>Услуга</th><th>Цена</th><th>Статус</th><th></th></tr></thead>
+        <tbody id="aBody"></tbody>
+      </table>
+    </div>`;
+  fillAppts();
+}
+
+function fillAppts() {
+  const b = document.getElementById('aBody'); if(!b) return;
+  b.innerHTML = [...clinic.appointments].reverse().map(a=>`
+    <tr>
+      <td style="color:var(--muted);font-size:12px">${a.date}<br>${a.time}</td>
+      <td>${a.patient.name}</td>
+      <td style="color:var(--muted)">${a.doctor.name}</td>
+      <td>${a.service.name}</td>
+      <td>${a.service.price.toLocaleString()} ₸</td>
+      <td><span class="badge ${SB[a.status]}">${SL[a.status]}</span></td>
+      <td style="display:flex;gap:5px;flex-wrap:nowrap">
+        ${a.status!==Status.DONE&&a.status!==Status.CANCELED ? `<button class="btn btn-sm btn-success" onclick="completeA(${a.id})">✓</button>` : ''}
+        ${a.status!==Status.DONE&&a.status!==Status.CANCELED ? `<button class="btn btn-sm btn-danger"  onclick="cancelA(${a.id})">✕</button>` : ''}
+      </td>
+    </tr>`).join('');
+}
+
+function openBookAppt() {
+  const po = clinic.patients.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+  const do_ = clinic.doctors.map(d=>`<option value="${d.id}">${d.name} — ${d.specialization}</option>`).join('');
+  const so = clinic.services.map(s=>`<option value="${s.id}">${s.name} (${s.price.toLocaleString()} ₸)</option>`).join('');
+  const t = new Date().toISOString().slice(0,10);
+  document.getElementById('modalTitle').textContent = 'Запись на приём';
+  document.getElementById('modalBody').innerHTML = `
+    <div class="form-group"><label class="form-label">Пациент</label><select class="form-control" id="b_p">${po}</select></div>
+    <div class="form-group"><label class="form-label">Врач</label><select class="form-control" id="b_d">${do_}</select></div>
+    <div class="form-group"><label class="form-label">Услуга</label><select class="form-control" id="b_s">${so}</select></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Дата</label><input class="form-control" type="date" id="b_date" value="${t}"></div>
+      <div class="form-group"><label class="form-label">Время</label><input class="form-control" type="time" id="b_time" value="09:00"></div>
+    </div>`;
+  document.getElementById('modalFoot').innerHTML = `
+    <button class="btn btn-ghost" onclick="closeModal()">Отмена</button>
+    <button class="btn btn-primary" onclick="saveAppt()">Записать</button>`;
+  openModal();
+}
+
+function saveAppt() {
+  const pid = parseInt(document.getElementById('b_p').value);
+  const did = parseInt(document.getElementById('b_d').value);
+  const sid = parseInt(document.getElementById('b_s').value);
+  const date = document.getElementById('b_date').value;
+  const time = document.getElementById('b_time').value;
+  if(!date||!time) { toast('Укажите дату и время'); return; }
+  clinic.book(pid, did, sid, date, time);
+  closeModal(); toast('Запись создана!'); renderAppts();
+}
+
+function completeA(id) {
+  const a = clinic.appointments.find(x=>x.id===id);
+  if(a){ a.complete(); toast('Приём завершён'); fillAppts(); }
+}
+
+function cancelA(id) {
+  const a = clinic.appointments.find(x=>x.id===id);
+  if(a){ a.cancel(); toast('Запись отменена'); fillAppts(); }
+}
+
+// ── Services ───────────────────────────────
+function renderServices() {
+  document.getElementById('topbarActions').innerHTML = `<button class="btn btn-primary" onclick="openAddService()">+ Добавить услугу</button>`;
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <table class="data-table">
+        <thead><tr><th>Название</th><th>Цена</th><th>Длительность</th><th></th></tr></thead>
+        <tbody id="svBody"></tbody>
+      </table>
+    </div>`;
+  fillServices();
+}
+
+function fillServices() {
+  const b = document.getElementById('svBody'); if(!b) return;
+  b.innerHTML = clinic.services.map(s=>`
+    <tr>
+      <td>${s.name}</td>
+      <td><strong>${s.price.toLocaleString()} ₸</strong></td>
+      <td style="color:var(--muted)">${s.durationMin} мин.</td>
+      <td><button class="btn btn-sm btn-danger" onclick="delService(${s.id})">Удалить</button></td>
+    </tr>`).join('');
+}
+
+function openAddService() {
+  document.getElementById('modalTitle').textContent = 'Новая услуга';
+  document.getElementById('modalBody').innerHTML = `
+    <div class="form-group"><label class="form-label">Название *</label><input class="form-control" id="sv_n" placeholder="Название услуги"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Цена (₸) *</label><input class="form-control" type="number" id="sv_p" placeholder="15000"></div>
+      <div class="form-group"><label class="form-label">Длит. (мин) *</label><input class="form-control" type="number" id="sv_d" placeholder="45"></div>
+    </div>`;
+  document.getElementById('modalFoot').innerHTML = `
+    <button class="btn btn-ghost" onclick="closeModal()">Отмена</button>
+    <button class="btn btn-primary" onclick="saveService()">Сохранить</button>`;
+  openModal();
+}
+
+function saveService() {
+  const name = document.getElementById('sv_n').value.trim();
+  const price = parseInt(document.getElementById('sv_p').value);
+  const dur = parseInt(document.getElementById('sv_d').value);
+  if(!name||!price||!dur) { toast('Заполните все поля'); return; }
+  clinic.addService(name, price, dur);
+  closeModal(); toast('Услуга добавлена!'); renderServices();
+}
+
+function delService(id) {
+  clinic.removeService(id); toast('Услуга удалена'); fillServices();
+}
+
+// Init
+render();
+</script>
+
+</body>
+</html>
